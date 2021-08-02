@@ -11,4 +11,10 @@ describe Bank do
     bank.deposit(100)
     expect(bank.balance).to eq(100)
   end
+
+  it 'can withdraw money' do
+    bank.deposit(100)
+    bank.withdraw(50)
+    expect(bank.balance).to eq(50)
+  end
 end
