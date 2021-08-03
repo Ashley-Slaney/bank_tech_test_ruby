@@ -22,15 +22,18 @@ class Bank
   end
 
   def statement
-    @transactions.reverse.each do |transaction|
-      @statement_output << "\n#{transaction[:date]} || #{transaction[:amount]} || #{'%.2f' % transaction[:balance]}"
-    end
-
+    reverse_transactions
+    
     output = @statement_output.split("\n")
     output.each do |transaction|
       puts transaction
     end
-
     @statement_output
+  end
+
+  def reverse_transactions
+    @transactions.reverse.each do |transaction|
+      @statement_output << "\n#{transaction[:date]} || #{transaction[:amount]} || #{'%.2f' % transaction[:balance]}"
+    end
   end
 end
