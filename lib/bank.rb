@@ -10,6 +10,7 @@ class Bank
   def deposit(amount)
     @balance += amount
     transaction("#{'%.2f' % amount} ||")
+    @balance
   end
 
   def withdraw(amount)
@@ -18,6 +19,7 @@ class Bank
     else
       @balance -= (amount)
       transaction("|| #{'%.2f' % amount}")
+      @balance
     end
   end
 
