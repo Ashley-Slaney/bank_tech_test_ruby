@@ -6,14 +6,16 @@ class Bank
     @transactions = []
   end
 
-  # deposit money
+  # updates the balance with the depositted amount and calls the transaction method to store
+  # the transaction
   def deposit(amount)
     @balance += amount
     transaction("#{'%.2f' % amount} ||")
     @balance
   end
 
-  # withdraw money - won't allow you to go below 0
+  # updates the balance with the withdrawn amount - won't allow you to go below 0 and calls
+  # the transaction method to store the transaction
   def withdraw(amount)
     if @balance - amount < 0
       return "Your balance can not go below 0"
