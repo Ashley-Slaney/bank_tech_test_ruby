@@ -1,5 +1,47 @@
 # bank_tech_test_ruby
-Makers week 10 tech test to practice producing high quality code using TDD and OOP
+Makers week 10 tech test to practice producing high quality code using TDD and OOP.
+
+## How I approached the challenge
+Firstly I took the important pieces of information for the challenge and turned them into user stories:
+
+```
+As an account holder,
+So that I can keep my money safe,
+I would like to be able to deposit money into my account.
+```
+```
+As an account holder,
+So that I can access my money,
+I would like to be able to withdraw money from my account.
+```
+```
+As an account holder,
+So that I can see my transactions,
+I would like to be able to see my bank statement.
+```
+```
+As an account holder,
+So that my bank statement makes sense to me,
+I would like to be able to see which transactions were going in and which were coming out.
+```
+
+After I created the user stories I started to consider which methods I would need to implement these user stories. I used a TDD process to achieve these user stories with RSpec and Ruby.
+
+### How to run this program
+
+In the command line:
+`git clone https://github.com/Ashley-Slaney/bank_tech_test_ruby.git`
+`cd bank_tech_test_ruby`
+`irb`
+`require './lib/bank.rb`
+You can now create an instance with `Bank.new` and test out the program
+Here's an example:
+`bank = Bank.new`
+`bank.deposit(1000)`
+`bank.deposit(2000)`
+`bank.withdraw(500)`
+`bank.statement`
+If you want to run the unit tests, `exit` out of the IRB and run `rspec`
 
 ## Specification
 
