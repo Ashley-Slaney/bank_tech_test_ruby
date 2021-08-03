@@ -34,4 +34,11 @@ describe Bank do
   it 'can not go below 0 balance' do
     expect(bank.withdraw(50)).to eq("Your balance can not go below 0")
   end
+
+  it 'does not duplicate the statement when calling for the statement consecutively' do
+    bank.deposit(1000)
+    bank.deposit(500)
+    bank.statement
+    expect(bank.statement).to eq("date || credit || debit || balance\n03/08/2021 || 500.00 || || 1500.00\n03/08/2021 || 1000.00 || || 1000.00")
+  end
 end

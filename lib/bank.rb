@@ -4,7 +4,6 @@ class Bank
   def initialize
     @balance = 0
     @transactions = []
-    @statement_output = "date || credit || debit || balance"
   end
 
   def deposit(amount)
@@ -38,6 +37,7 @@ class Bank
   end
 
   def reverse_transactions
+    @statement_output = "date || credit || debit || balance"
     @transactions.reverse.each do |transaction|
       @statement_output << "\n#{transaction[:date]} || #{transaction[:amount]} || #{'%.2f' % transaction[:balance]}"
     end
