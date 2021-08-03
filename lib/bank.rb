@@ -13,8 +13,12 @@ class Bank
   end
 
   def withdraw(amount)
-    @balance -= (amount)
-    transaction("|| #{'%.2f' % amount}")
+    if @balance - amount < 0
+      return "Your balance can not go below 0"
+    else
+      @balance -= (amount)
+      transaction("|| #{'%.2f' % amount}")
+    end
   end
 
   def transaction(amount)
@@ -23,7 +27,7 @@ class Bank
 
   def statement
     reverse_transactions
-    
+
     output = @statement_output.split("\n")
     output.each do |transaction|
       puts transaction

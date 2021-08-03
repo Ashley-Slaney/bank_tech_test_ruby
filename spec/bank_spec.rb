@@ -30,4 +30,8 @@ describe Bank do
     bank.withdraw(500)
     expect(bank.statement).to eq("date || credit || debit || balance\n03/08/2021 || || 500.00 || 2500.00\n03/08/2021 || 2000.00 || || 3000.00\n03/08/2021 || 1000.00 || || 1000.00")
   end
+
+  it 'can not go below 0 balance' do
+    expect(bank.withdraw(50)).to eq("Your balance can not go below 0")
+  end
 end
