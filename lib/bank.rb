@@ -21,19 +21,21 @@ class Bank
       @balance
     end
   end
-
-  def transaction(amount)
-    @transactions.push(date: Time.now.strftime("%d/%m/%Y"), amount: amount, balance: @balance)
-  end
-
+  
   def statement
     reverse_transactions
-
+    
     output = @statement_output.split("\n")
     output.each do |transaction|
       puts transaction
     end
     @statement_output
+  end
+  
+  private 
+  
+  def transaction(amount)
+    @transactions.push(date: Time.now.strftime("%d/%m/%Y"), amount: amount, balance: @balance)
   end
 
   def reverse_transactions
