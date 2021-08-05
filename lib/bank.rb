@@ -9,6 +9,9 @@ class Bank
   # updates the balance with the depositted amount and calls the transaction method to store
   # the transaction
   def deposit(amount)
+    if amount < 1
+      return "Minimum deposit amount: £1"
+    end
     @balance += amount
     transaction("#{'%.2f' % amount} ||")
     @balance
@@ -19,16 +22,15 @@ class Bank
   def withdraw(amount)
     if @balance - amount < 0
       return "Your balance can not go below 0"
-    else
-      @balance -= (amount)
-      transaction("|| #{'%.2f' % amount}")
-      @balance
     end
+    @balance -= (amount)
+    transaction("|| #{'%.2f' % amount}")
+    @balance
   end
   
   # responsible for outputting each transaction 
   def statement
-    reverse_transactions
+    organise_transactions
     
     output = @statement_output.split("\n")
     output.each do |transaction|
@@ -45,7 +47,7 @@ class Bank
   end
 
   # shows the most recent transactions first
-  def reverse_transactions
+  def organise_transactions
     @statement_output = "date || credit || debit || balance"
     @transactions.reverse.each do |transaction|
       @statement_output << "\n#{transaction[:date]} || #{transaction[:amount]} || #{'%.2f' % transaction[:balance]}"
