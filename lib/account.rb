@@ -6,6 +6,9 @@ class Account
   end
 
   def deposit(amount)
+    if amount < 1
+      return "Minimum deposit amount: £1"
+    end
     @balance += amount
   end
 end

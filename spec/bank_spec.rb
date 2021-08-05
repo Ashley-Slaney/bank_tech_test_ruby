@@ -49,7 +49,4 @@ describe Bank do
   #   expect(bank.statement).to eq("date || credit || debit || balance\n#{date} || 500.00 || || 1500.00\n#{date} || 1000.00 || || 1000.00")
   # end
 
-  # it 'needs a minimum of £1 to deposit money' do
-  #   expect(bank.deposit(0.73)).to eq("Minimum deposit amount: £1")
-  # end
 end
