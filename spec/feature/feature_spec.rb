@@ -42,7 +42,7 @@ describe Bank do
   end
 
   it 'does not add a failed transaction' do
-    bank.withdraw(100)
+    expect(bank.withdraw(100)).to eq("Can not go below £0 balance")
     expect{ bank.print_statement }.to output("date || credit || debit || balance\n").to_stdout
   end
 end
