@@ -9,8 +9,8 @@ describe Statement do
   end
 
   it 'stores multiple transactions' do
-    statement.store_transaction(100, 100)
-    statement.store_transaction(400, 500)
+    statement.send(:store_transaction, 100, 100)
+    statement.send(:store_transaction, 400, 500)
     expect(statement.transactions).to eq([{date: date, amount: 100, balance: 100}, {date: date, amount: 400, balance: 500}])
   end
 end

@@ -5,6 +5,8 @@ class Statement
     @transactions = []
   end
 
+  private
+  
   def store_transaction(amount, balance)
     @transactions.push(date: Time.now.strftime("%d/%m/%Y"), amount: amount, balance: balance)
   end
