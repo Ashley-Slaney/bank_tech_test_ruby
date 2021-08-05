@@ -15,4 +15,10 @@ describe Account do
   it 'needs a minimum of £1 to deposit money' do
     expect(account.deposit(0.73)).to eq("Minimum deposit amount: £1")
   end
+
+  it 'can withdraw money' do
+    account.deposit(50)
+    account.withdraw(10)
+    expect(account.balance).to eq(40)
+  end
 end
