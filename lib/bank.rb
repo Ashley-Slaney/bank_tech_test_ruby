@@ -3,6 +3,7 @@ class Bank
 
   def initialize
     @account = Account.new
+    @statement = Statement.new
     # @balance = 0
     # @transactions = []
   end
