@@ -20,4 +20,11 @@ describe Statement do
   it 'prints the statement' do
     expect(statement.print_statement).to eq("date || credit || debit || balance")
   end
+
+  it 'prints the statement after some transactions' do
+    statement.send(:store_transaction, "#{'%.2f' % 100} ||", 100)
+    statement.send(:store_transaction, "#{'%.2f' % 400} ||", 500)
+    statement.send(:store_transaction, "|| #{'%.2f' % 500}", 1000)
+    expect(statement.print_statement).to eq("date || credit || debit || balance\n#{date} || || 500.00 || 1000.00\n#{date} || 400.00 || || 500.00\n#{date} || 100.00 || || 100.00")
+  end
 end
