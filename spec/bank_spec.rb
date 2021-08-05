@@ -28,7 +28,7 @@ describe Bank do
     bank.deposit(1000)
     bank.deposit(2000)
     bank.withdraw(500)
-    expect(bank.statement).to eq("date || credit || debit || balance\n03/08/2021 || || 500.00 || 2500.00\n03/08/2021 || 2000.00 || || 3000.00\n03/08/2021 || 1000.00 || || 1000.00")
+    expect(bank.statement).to eq("date || credit || debit || balance\n#{date} || || 500.00 || 2500.00\n#{date} || 2000.00 || || 3000.00\n#{date} || 1000.00 || || 1000.00")
   end
 
   it 'can not go below 0 balance' do
@@ -39,7 +39,7 @@ describe Bank do
     bank.deposit(1000)
     bank.deposit(500)
     bank.statement
-    expect(bank.statement).to eq("date || credit || debit || balance\n03/08/2021 || 500.00 || || 1500.00\n03/08/2021 || 1000.00 || || 1000.00")
+    expect(bank.statement).to eq("date || credit || debit || balance\n#{date} || 500.00 || || 1500.00\n#{date} || 1000.00 || || 1000.00")
   end
 
   it 'needs a minimum of £1 to deposit money' do
