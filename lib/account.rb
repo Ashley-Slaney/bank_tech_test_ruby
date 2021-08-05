@@ -2,7 +2,6 @@ class Account
   attr_reader :balance 
 
   def initialize
-    @statement = Statement.new
     @balance = 0.00
   end
 
@@ -13,6 +12,7 @@ class Account
       return "Minimum deposit amount: £1"
     end
     @balance += amount
+    @balance
   end
 
   # updates the balance with the withdrawn amount - won't allow you to go below 0 and calls
@@ -22,5 +22,6 @@ class Account
       return "Can not go below £0 balance"
     end
     @balance -= amount
+    @balance
   end
 end
