@@ -27,4 +27,10 @@ describe Statement do
     statement.send(:store_transaction, "|| #{'%.2f' % 500}", 1000)
     expect(statement.print_statement).to eq("date || credit || debit || balance\n#{date} || || 500.00 || 1000.00\n#{date} || 400.00 || || 500.00\n#{date} || 100.00 || || 100.00")
   end
+
+  it 'does not duplicate the statement when calling for the statement consecutively' do
+    statement.print_statement
+    statement.print_statement
+    expect(statement.print_statement).to eq("date || credit || debit || balance")
+  end
 end
