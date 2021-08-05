@@ -5,6 +5,11 @@ class Account
     @balance = 0.00
   end
 
+  # returns the current balance
+  def display_balance
+    return ('%.2f' % @balance).to_f
+  end
+
   # updates the balance with the depositted amount - needs a minimum of £1 to deposit
   # and calls the transaction method to store the transaction
   def deposit(amount)
