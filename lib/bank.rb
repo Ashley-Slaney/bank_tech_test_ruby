@@ -9,21 +9,29 @@ class Bank
     @statement = Statement.new
   end
 
+  def balance
+    @account.display_balance
+  end
+
   def deposit(amount)
-    balance = @account.deposit(amount)
+    if @account.deposit(amount) == "Minimum deposit amount: £1"
+      return "Minimum deposit amount: £1"
+    end
     @statement.store_transaction("#{'%.2f' % amount} ||", balance)
     balance
   end
 
   def withdraw(amount)
-    balance = @account.withdraw(amount)
+    if @account.withdraw(amount) == "Can not go below £0 balance"
+      return "Can not go below £0 balance"
+    end
     @statement.store_transaction("|| #{'%.2f' % amount}", balance)
     balance
   end
 
   def print_statement
     @statement.print_statement
-    @account.balance
+    balance
   end
 
 end
