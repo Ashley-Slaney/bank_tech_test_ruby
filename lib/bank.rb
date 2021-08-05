@@ -6,8 +6,8 @@ class Bank
     @transactions = []
   end
 
-  # updates the balance with the depositted amount and calls the transaction method to store
-  # the transaction
+  # updates the balance with the depositted amount - needs a minimum of £1 to deposit
+  # and calls the transaction method to store the transaction
   def deposit(amount)
     if amount < 1
       return "Minimum deposit amount: £1"
