@@ -21,4 +21,8 @@ describe Account do
     account.withdraw(10)
     expect(account.balance).to eq(40)
   end
+
+  it 'can not go below £0 when withdrawing money' do
+    expect(account.withdraw(10)).to eq("Can not go below £0 balance")
+  end
 end

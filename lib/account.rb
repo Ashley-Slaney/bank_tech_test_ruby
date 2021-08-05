@@ -13,6 +13,9 @@ class Account
   end
 
   def withdraw(amount)
+    if @balance - amount < 0
+      return "Can not go below £0 balance"
+    end
     @balance -= amount
   end
 end
