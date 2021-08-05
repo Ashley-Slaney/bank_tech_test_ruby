@@ -2,6 +2,11 @@ require 'account'
 
 describe Account do
   let(:account) { Account.new }
+  let(:statement) { double("Statement", transactions: []) }
+
+  it 'initializes the statement class' do
+    expect(statement.transactions).to eq([])
+  end
 
   it 'starts with 0 balance' do
     expect(account.balance).to eq(0.00)
