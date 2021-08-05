@@ -12,19 +12,17 @@ class Bank
   def deposit(amount)
     balance = @account.deposit(amount)
     @statement.store_transaction("#{'%.2f' % amount} ||", balance)
+    balance
   end
 
   # updates the balance with the depositted amount - needs a minimum of £1 to deposit
   # and calls the transaction method to store the transaction
 
-  # def deposit(amount)
-  #   if amount < 1
-  #     return "Minimum deposit amount: £1"
-  #   end
-  #   @balance += amount
-  #   transaction("#{'%.2f' % amount} ||")
-  #   @balance
-  # end
+  def withdraw(amount)
+    balance = @account.withdraw(amount)
+    @statement.store_transaction("|| #{'%.2f' % amount}", balance)
+    balance
+  end
 
   # updates the balance with the withdrawn amount - won't allow you to go below 0 and calls
   # the transaction method to store the transaction
