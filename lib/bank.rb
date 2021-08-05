@@ -1,11 +1,17 @@
+require_relative 'account'
+require_relative 'statement'
+
 class Bank 
   attr_reader :balance, :account
 
   def initialize
     @account = Account.new
     @statement = Statement.new
-    # @balance = 0
-    # @transactions = []
+  end
+
+  def deposit(amount)
+    balance = @account.deposit(amount)
+    @statement.store_transaction("#{'%.2f' % amount} ||", balance)
   end
 
   # updates the balance with the depositted amount - needs a minimum of £1 to deposit

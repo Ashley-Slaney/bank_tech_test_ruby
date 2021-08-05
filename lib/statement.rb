@@ -5,6 +5,7 @@ class Statement
     @transactions = []
   end
 
+  # responsible for outputting each transaction 
   def print_statement
     organise_transactions
     
@@ -15,12 +16,12 @@ class Statement
     @statement_output
   end
 
-  private
-
+  # pushes each transaction to the array that all of the transactions are being stored in
   def store_transaction(amount, balance)
     @transactions.push(date: Time.now.strftime("%d/%m/%Y"), amount: amount, balance: balance)
   end
 
+  # rearranges the transactions array to show the most recent first
   def organise_transactions
     @statement_output = "date || credit || debit || balance"
     @transactions.reverse.each do |transaction|
