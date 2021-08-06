@@ -2,7 +2,6 @@ require 'bank'
 
 describe Bank do
   let(:bank) { Bank.new }
-  let(:date) { Time.now.strftime("%d/%m/%Y") }
   let(:account) { double("Account", balance: 0) }
   let(:statement) { double("Statement", transactions: []) }
 

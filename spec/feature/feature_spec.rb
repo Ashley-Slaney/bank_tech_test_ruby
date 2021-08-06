@@ -2,6 +2,7 @@ require 'bank'
 
 describe Bank do
   let(:bank) { Bank.new }
+  let(:date) { Time.now.strftime("%d/%m/%Y") }
 
   it 'creates an account starting with 0 balance' do
     expect(bank.balance).to eq(0.00)
@@ -38,7 +39,7 @@ describe Bank do
     bank.deposit(100)
     bank.deposit(1000)
     bank.withdraw(100)
-    expect{ bank.print_statement }.to output("date || credit || debit || balance\n05/08/2021 || || 100.00 || 1000.00\n05/08/2021 || 1000.00 || || 1100.00\n05/08/2021 || 100.00 || || 100.00\n").to_stdout
+    expect{ bank.print_statement }.to output("date || credit || debit || balance\n#{date} || || 100.00 || 1000.00\n#{date} || 1000.00 || || 1100.00\n#{date} || 100.00 || || 100.00\n").to_stdout
   end
 
   it 'does not add a failed transaction' do
